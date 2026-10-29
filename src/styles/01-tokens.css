@@ -1,0 +1,67 @@
+/* ═══════════════════════════════════════════════════════
+   DESIGN TOKENS — Red & Black (dark is the default theme)
+   --accent      red for text, icons, lines (AA on the page background)
+   --accent-fill deeper crimson for surfaces that carry white text
+   --wine        deep second stop for gradients and glows
+   :root holds the light variant; html[data-theme="dark"] is set
+   before first paint by the head script, so dark is what loads.
+═══════════════════════════════════════════════════════ */
+:root {
+  --bg:       #f7f3f3;
+  --bg2:      #ffffff;
+  --bg3:      #f1eaea;
+  --navy:     #161112;
+  --navy2:    #1f1719;
+  --navy3:    #3a1a1f;
+  --accent:   #b3232c;
+  --accent2:  #c8323b;
+  --accent-fill: #b3232c;
+  --accentRGB:179,35,44;
+  --wine:     #7a1a22;
+  --wineRGB:  122,26,34;
+  --grad-mid: #7a1a22;
+  --accent-on-dark: #ec6a70;   /* icons/text on --navy panels, which stay dark in both themes */
+  --particleRGB: 179,35,44;
+  --glow:     rgba(179,35,44,.10);
+  --txt:      #1c1517;
+  --body:     #3d3436;
+  --muted:    #6b6062;
+  --border:   #e6dcdd;
+  --card:     #ffffff;
+  --sh-sm:    0 2px 12px rgba(22,17,18,.07);
+  --sh-md:    0 8px 32px rgba(22,17,18,.10);
+  --sh-lg:    0 20px 60px rgba(22,17,18,.14);
+  --r:        14px;
+  --r-lg:     22px;
+  --r-xl:     30px;
+  --fd: 'Syne', sans-serif;
+  --fb: 'DM Sans Variable', 'DM Sans', sans-serif;
+  --fm: 'Space Mono', monospace;
+  --nav-h: 68px;
+}
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg:      #0c0a0b;
+  --bg2:     #110e0f;
+  --bg3:     #171314;
+  --navy:    #150f11;
+  --navy2:   #1c1416;
+  --navy3:   #2c161a;
+  --accent:  #e0484f;
+  --accent2: #ec6a70;
+  --accent-fill: #b82a33;
+  --accentRGB:184,42,51;
+  --wine:    #5e1218;
+  --wineRGB: 94,18,24;
+  --grad-mid:#f0c4c6;
+  --particleRGB: 224,72,79;
+  --glow:    rgba(184,42,51,.16);
+  --txt:     #ece6e6;
+  --body:    #a89fa1;
+  --muted:   #8a7f81;
+  --border:  #2a2124;
+  --card:    #141113;
+  --sh-sm:   0 2px 12px rgba(0,0,0,.45);
+  --sh-md:   0 8px 32px rgba(0,0,0,.55);
+  --sh-lg:   0 20px 60px rgba(0,0,0,.65);
+}

@@ -1,0 +1,40 @@
+---
+/* certs arrive with optimized image URLs from index.astro. These plain cards are the no-JS /
+   crawler version; Feature 41 replaces them with the interactive flip cards on load. */
+interface Props { certs: Array<Record<string, any>> }
+const { certs } = Astro.props;
+---
+<!-- ════════════════════ TRAININGS ══════════════════════ -->
+<section id="trainings">
+  <div class="container">
+    <div class="s-head gsap-reveal">
+      <span class="s-label"><i class="fa-solid fa-certificate" aria-hidden="true"></i> Certificates &amp; Trainings</span>
+      <h2 class="s-title glitch" data-text="Seminars &amp; Achievements">Seminars &amp; Achievements</h2>
+      <p class="s-sub">A collection of certificates earned through dedication and participation in industry-relevant programs.</p>
+      <div class="divider"></div>
+    </div>
+
+    <!-- Filter pills -->
+    <div class="filter-row" role="group" aria-label="Filter certificates">
+      <button type="button" class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+      <button type="button" class="filter-btn" data-filter="participation" aria-pressed="false">Participation</button>
+      <button type="button" class="filter-btn" data-filter="achievement" aria-pressed="false">Achievement</button>
+      <button type="button" class="filter-btn" data-filter="completion" aria-pressed="false">Completion</button>
+    </div>
+
+    <!-- Cards are rendered from portfolioData.certs by Feature 41 (before the tilt / filter / modal features bind) -->
+    <div class="cert-grid" id="certGrid">
+      {certs.map((c) => (
+        <article class="cert-card" data-cat={c.cat} data-id={c.id}>
+          <div class="cert-img-wrap"><img src={c.img} alt={`${c.type}: ${c.title} (${c.issuer})`} width="700" height="525" loading="lazy" decoding="async" /></div>
+          <div class="cert-body">
+            <span class="cert-type">{c.type}</span>
+            <h3 class="cert-title">{c.title}</h3>
+            <div class="cert-meta"><span><time datetime={c.dateISO}>{c.date}</time></span><span>{c.issuer}</span></div>
+            <p class="cert-desc">{c.summary || c.desc}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

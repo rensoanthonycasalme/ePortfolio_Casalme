@@ -1,0 +1,20 @@
+---
+import NetLab from './NetLab.astro';
+import SubnetLab from './SubnetLab.astro';
+import LabNotebook from './LabNotebook.astro';
+---
+<!-- ═══════════════════════ LAB ═════════════════════════ -->
+<section id="lab">
+  <div class="container">
+    <div class="s-head gsap-reveal">
+      <span class="s-label"><i class="fa-solid fa-flask" aria-hidden="true"></i> Hands-on Lab</span>
+      <h2 class="s-title glitch" data-text="Networking Lab">Networking Lab</h2>
+      <p class="s-sub">Try the networking basics I'm studying, right in your browser: troubleshoot a broken network and work out a subnet.</p>
+      <div class="divider"></div>
+    </div>
+
+    <NetLab />
+    <SubnetLab />
+    <LabNotebook />
+  </div>
+</section>

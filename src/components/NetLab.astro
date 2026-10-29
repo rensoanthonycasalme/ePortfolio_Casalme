@@ -1,0 +1,49 @@
+    <!-- ════════════ BREAK/FIX NETWORK LAB (Feature 49) ════════════ -->
+    <article class="nlab gsap-reveal" id="netLab" aria-labelledby="nlabTitle">
+      <header class="nlab-head">
+        <span class="nlab-head-ico" aria-hidden="true"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i></span>
+        <div class="nlab-head-txt">
+          <p class="nlab-kicker"><span id="nlabTicketNo">Ticket</span> · status: open · priority: résumé</p>
+          <h3 class="nlab-title" id="nlabTitle">Break/Fix Lab: get the packet to the résumé server</h3>
+          <p class="nlab-lede">One thing in this small network is misconfigured. Ping <code>resume.lab</code> from the Visitor PC, inspect the devices, fix the fault and ping again. The routing, ARP and access-list rules are simulated the way real IPv4 equipment behaves.</p>
+        </div>
+        <a class="nlab-skip" id="nlabSkip" href="#contact">Skip the lab: contact Renso <i class="fa-solid fa-arrow-down" aria-hidden="true"></i></a>
+      </header>
+
+      <div class="nlab-tabs" id="nlabTabs" role="tablist" aria-label="Lab mode" hidden></div>
+
+      <div class="nlab-fix" id="nlabFix">
+        <div class="nlab-toolbar">
+          <button type="button" class="nlab-btn nlab-btn-pri" id="nlabPing" aria-disabled="false"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Ping resume.lab</button>
+          <button type="button" class="nlab-btn" id="nlabHint" aria-expanded="false" aria-controls="nlabHints"><i class="fa-solid fa-lightbulb" aria-hidden="true"></i> Hint</button>
+          <button type="button" class="nlab-btn nlab-btn-ghost" id="nlabReset"><i class="fa-solid fa-rotate-left" aria-hidden="true"></i> Reset config</button>
+          <button type="button" class="nlab-btn nlab-btn-ghost" id="nlabNew"><i class="fa-solid fa-shuffle" aria-hidden="true"></i> New fault</button>
+          <p class="nlab-stats"><span id="nlabPings"></span><span id="nlabSolved"></span></p>
+        </div>
+        <p class="nlab-now" id="nlabNow" aria-hidden="true"></p>
+
+        <div class="nlab-main">
+          <div class="nlab-left">
+            <div class="nlab-stage" id="nlabStage"></div>
+            <div class="nlab-hints" id="nlabHints" hidden></div>
+            <div class="nlab-reward" id="nlabReward" hidden></div>
+            <div class="nlab-cols">
+              <div class="nlab-col">
+                <p class="nlab-hk">Visitor PC · Command Prompt</p>
+                <pre class="nlab-term" id="nlabTerm" tabindex="0" aria-label="Visitor PC command prompt output"></pre>
+              </div>
+              <div class="nlab-col">
+                <p class="nlab-hk">Packet log</p>
+                <ol class="nlab-log" id="nlabLog" aria-live="polite" aria-label="Packet log, one line per hop"></ol>
+              </div>
+            </div>
+          </div>
+          <aside class="nlab-side" id="nlabSide" aria-label="Device configuration">
+            <div class="nlab-panel" id="nlabPanel"></div>
+          </aside>
+        </div>
+      </div>
+
+      <div class="nlab-explore" id="nlabExplore" hidden></div>
+      <dialog class="nlab-sheet" id="nlabSheet" aria-label="Device configuration"></dialog>
+    </article>

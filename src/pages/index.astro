@@ -1,0 +1,88 @@
+---
+import Base from '../layouts/Base.astro';
+import Preloader from '../components/Preloader.astro';
+import SideNav from '../components/SideNav.astro';
+import PageChrome from '../components/PageChrome.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import Marquee from '../components/Marquee.astro';
+import About from '../components/About.astro';
+import Education from '../components/Education.astro';
+import Skills from '../components/Skills.astro';
+import Lab from '../components/Lab.astro';
+import Trainings from '../components/Trainings.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+import BackToTop from '../components/BackToTop.astro';
+import CertModal from '../components/CertModal.astro';
+import Terminal from '../components/Terminal.astro';
+import CtfComment from '../components/CtfComment.astro';
+import data from '../data/portfolio.json';
+import { getImage } from 'astro:assets';
+
+/* Certificate images: portfolio.json names a file in src/assets/img; the build turns it
+   into a 700px WebP for the card (img) and a 1400px WebP for the pop-up (imgFull). */
+const files = import.meta.glob<{ default: ImageMetadata }>('../assets/img/*.{png,jpg,jpeg,webp}', { eager: true });
+const byName = Object.fromEntries(Object.entries(files).map(([path, mod]) => [path.split('/').pop(), mod.default]));
+const certs = await Promise.all(data.certs.map(async (c) => {
+  const file = byName[String(c.img).split('/').pop() ?? ''];
+  if (!file) return c;
+  const [thumb, full] = await Promise.all([
+    getImage({ src: file, width: 700, format: 'webp', quality: 80 }),
+    getImage({ src: file, width: 1400, format: 'webp', quality: 85 }),
+  ]);
+  return { ...c, img: thumb.src, imgFull: full.src };
+}));
+/* "<" is escaped so the JSON can never close its <script> early */
+const pdJson = JSON.stringify({ ...data, certs }).replace(/</g, '\\u003c');
+
+/* JSON-LD for search engines: who this is, where he studies, and the certificates as credentials */
+const person = data.person;
+const siteUrl = new URL(import.meta.env.BASE_URL, Astro.site).href.replace(/\/?$/, '/');
+const jsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: person.name,
+  url: siteUrl,
+  image: siteUrl + 'og.jpg',
+  email: 'mailto:' + person.email,
+  jobTitle: 'BS Information Technology student',
+  affiliation: { '@type': 'CollegeOrUniversity', name: person.school },
+  alumniOf: data.education.filter((e) => !e.current).map((e) => ({ '@type': 'EducationalOrganization', name: e.school })),
+  knowsAbout: data.interests,
+  sameAs: Object.values(person.links).filter(Boolean),
+  hasCredential: data.certs.map((c) => ({
+    '@type': 'EducationalOccupationalCredential',
+    name: c.title,
+    credentialCategory: c.type,
+    dateCreated: c.dateISO,
+    recognizedBy: { '@type': 'Organization', name: c.issuer },
+    ...(c.verifyUrl ? { url: c.verifyUrl } : {}),
+  })),
+}).replace(/</g, '\\u003c');
+---
+<Base title="Renso Anthony L. Casalme · IT Portfolio" description="BS Information Technology student at De La Salle Lipa (Class of 2027) looking for an IT Support, Networking or Cybersecurity internship. Certificates, hands-on networking labs and contact details.">
+  <script type="application/ld+json" is:inline slot="head" set:html={jsonLd}></script>
+  <CtfComment />
+  <a class="skip-link" href="#main">Skip to content</a>
+  <Preloader />
+  <SideNav />
+  <PageChrome />
+  <Navbar />
+  <main id="main" tabindex="-1">
+  <Hero />
+  <Marquee />
+  <About />
+  <Education />
+  <Skills />
+  <Lab />
+  <Trainings certs={certs} />
+  <Contact />
+  </main>
+  <Footer />
+  <BackToTop />
+  <CertModal />
+  <!-- content for every data-driven feature: edit src/data/portfolio.json -->
+  <script type="application/json" id="portfolioData" is:inline set:html={pdJson}></script>
+  <Terminal />
+</Base>

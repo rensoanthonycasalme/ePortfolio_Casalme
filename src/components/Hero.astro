@@ -1,0 +1,63 @@
+---
+import { Image } from 'astro:assets';
+import profile from '../assets/img/profile.jpg';
+import RoleLens from './RoleLens.astro';
+---
+<!-- ════════════════════ HERO ══════════════════════════ -->
+<section id="home">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+  <canvas id="heroCanvas" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;"></canvas>
+
+  <div class="hero-inner">
+    <!-- TEXT -->
+    <div class="hero-text">
+      <div class="hero-avail">
+        <span class="pulse-dot"></span>
+        Available for Internship
+      </div>
+
+      <h1 class="hero-name" id="heroName">
+        <span class="line"><span class="word">Renso&nbsp;</span><span class="word">Anthony</span></span>
+        <span class="line"><span class="word accent-word">L.&nbsp;</span><span class="word">Casalme</span></span>
+      </h1>
+
+      <p class="hero-role" id="heroRole">Aspiring IT Support / Network Intern</p>
+
+      <!-- Internship snapshot (Feature 42): rows are re-rendered from portfolioData; empty slots render nothing -->
+      <dl class="ojt-snapshot" id="ojtSnapshot" aria-label="Internship snapshot">
+        <div class="ojt-row wide"><dt>Focus</dt><dd>IT Support · Networking · Cybersecurity</dd></div>
+        <div class="ojt-row wide"><dt>Program</dt><dd>BSIT, De La Salle Lipa · Class of 2027</dd></div>
+      </dl>
+
+      <p class="hero-bio">I'm a second-year IT student at De La Salle Lipa with a strong interest in networking, cybersecurity and digital systems. I'm building my foundation through coursework and certificate programs, and I'm looking for an internship where I can put it to work.</p>
+
+      <div class="hero-btns">
+        <!-- Feature 42: becomes a real download + View link once portfolioData.resume.pdf is set; until then it prints the built-in résumé -->
+        <button type="button" class="btn-primary mag-btn" id="resumeBtn" hidden title="Opens the print dialog: choose “Save as PDF”"><i class="fa-solid fa-print" aria-hidden="true"></i> Save Résumé (PDF)</button>
+        <a href="#trainings" class="btn-outline mag-btn"><i class="fa-solid fa-certificate" aria-hidden="true"></i> View Trainings</a>
+      </div>
+      <RoleLens />
+
+      <div class="hero-stats">
+        <div><div class="hs-num" data-target="6" data-pd="certCount">6</div><div class="hs-label">Certificates</div></div>
+        <div><div class="hs-num" data-target="72" data-suffix="+">72+</div><div class="hs-label">Modules Completed</div></div>
+        <div><div class="hs-num" data-target="2027" data-pd="gradYear">2027</div><div class="hs-label">Graduation Year</div></div>
+      </div>
+    </div>
+
+    <!-- PHOTO -->
+    <div class="hero-photo-wrap" id="heroPhoto">
+      <div class="orbit-ring r1"><div class="orbit-dot"></div></div>
+      <div class="orbit-ring r2"></div>
+      <div class="photo-badge pb-dark"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> DLSL — IT Student</div>
+      <div class="photo-badge pb-light"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Cisco NetAcad Trained</div>
+      <div class="photo-frame" id="photoFrame">
+        <div class="photo-inner">
+          <Image src={profile} alt="Portrait of Renso Anthony L. Casalme" widths={[400, 640, 800]} sizes="(max-width: 600px) 240px, 340px" format="webp" quality={82} loading="eager" fetchpriority="high" decoding="async" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

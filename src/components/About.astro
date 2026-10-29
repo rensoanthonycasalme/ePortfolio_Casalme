@@ -1,0 +1,50 @@
+---
+import NowLog from './NowLog.astro';
+---
+<!-- ════════════════════ ABOUT ═════════════════════════ -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <!-- LEFT -->
+      <div class="about-left gsap-reveal">
+        <span class="s-label"><i class="fa-solid fa-user" aria-hidden="true"></i> About Me</span>
+        <h2 class="s-title glitch" data-text="Driven by Curiosity, Guided by Purpose">Driven by Curiosity,<br>Guided by Purpose</h2>
+
+        <div class="float-badges">
+          <span class="float-badge"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Cybersecurity</span>
+          <span class="float-badge"><i class="fa-brands fa-python" aria-hidden="true"></i> Python</span>
+          <span class="float-badge"><i class="fa-solid fa-network-wired" aria-hidden="true"></i> Networking</span>
+          <span class="float-badge"><i class="fa-solid fa-headset" aria-hidden="true"></i> IT Support</span>
+        </div>
+
+        <div class="about-highlights" style="margin-top:24px;">
+          <div class="about-item"><div class="about-icon"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></div><span class="about-item-text">Networking &amp; Security</span></div>
+          <div class="about-item"><div class="about-icon"><i class="fa-solid fa-wrench" aria-hidden="true"></i></div><span class="about-item-text">Technical Troubleshooting</span></div>
+          <div class="about-item"><div class="about-icon"><i class="fa-solid fa-headset" aria-hidden="true"></i></div><span class="about-item-text">Customer Support</span></div>
+          <div class="about-item"><div class="about-icon"><i class="fa-solid fa-book-open" aria-hidden="true"></i></div><span class="about-item-text">Continuous Learning</span></div>
+          <div class="about-item"><div class="about-icon"><i class="fa-solid fa-laptop-code" aria-hidden="true"></i></div><span class="about-item-text">Digital Skills</span></div>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="about-right gsap-reveal">
+        <p id="aboutIntro">I'm Renso, a second-year Information Technology student at De La Salle Lipa, building a career in tech. My studies have given me a deep interest in network systems, cybersecurity and technical problem-solving.</p>
+        <!-- portfolioData.about.story renders here (Feature 41) only when it is filled in -->
+        <p>I keep up with new technology and keep improving my skills through coursework, certificate programs and self-directed learning. I value clear communication, analytical thinking and putting what I learn into practice.</p>
+        <p>My goal is to contribute to the tech industry in networking, security or IT support, combining strong fundamentals with a growth mindset.</p>
+        <div class="about-card">
+          <p class="about-card-title"><i class="fa-solid fa-bolt" style="color:var(--accent-on-dark);margin-right:7px" aria-hidden="true"></i>Key Interests</p>
+          <div class="about-card-grid">
+            <div class="aci"><i class="fa-solid fa-check-circle" aria-hidden="true"></i> Cybersecurity</div>
+            <div class="aci"><i class="fa-solid fa-check-circle" aria-hidden="true"></i> Network Infrastructure</div>
+            <div class="aci"><i class="fa-solid fa-check-circle" aria-hidden="true"></i> Python Programming</div>
+            <div class="aci"><i class="fa-solid fa-check-circle" aria-hidden="true"></i> IT Support</div>
+            <div class="aci"><i class="fa-solid fa-check-circle" aria-hidden="true"></i> Cloud Technologies</div>
+            <div class="aci"><i class="fa-solid fa-check-circle" aria-hidden="true"></i> Digital Literacy</div>
+          </div>
+        </div>
+        <NowLog />
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,11 @@
+<!-- FEATURE 51 — now.log: rendered from PD.now by src/scripts/site.js; stays hidden while PD.now is empty.
+     The terminal's `cat now.log` reads the same data. -->
+<div class="now-term" id="nowLog" hidden>
+  <div class="now-bar" aria-hidden="true"><span></span><span></span><span></span><b>now.log</b></div>
+  <div class="now-body">
+    <p class="now-cmd"><span class="now-prompt" aria-hidden="true">$</span> cat now.log <span class="now-age" id="nowAge"></span></p>
+    <dl class="now-kv" id="nowKv"></dl>
+    <ol class="now-list" id="nowList"></ol>
+    <details class="now-older" id="nowOlderWrap" hidden><summary>Older entries</summary><ol class="now-list" id="nowOlder"></ol></details>
+  </div>
+</div>

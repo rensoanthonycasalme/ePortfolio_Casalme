@@ -1,0 +1,78 @@
+    <article class="sn-card gsap-reveal" id="subnetLab" aria-labelledby="snTitle">
+  <header class="sn-head">
+    <span class="sn-head-ico" aria-hidden="true"><i class="fa-solid fa-network-wired" aria-hidden="true"></i></span>
+    <div class="sn-head-txt">
+      <h3 class="sn-title" id="snTitle">Subnet Lab</h3>
+      <p class="sn-lede">An IPv4 subnet calculator that shows its working. Type an address, drag the prefix, or let it quiz you. Everything runs in your browser.</p>
+    </div>
+    <div class="sn-actions">
+      <button type="button" class="sn-btn" id="snQuizBtn" aria-expanded="false" aria-controls="snQuiz"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Quiz me</button>
+      <button type="button" class="sn-btn sn-btn-ghost" id="snCopy"><i class="fa-solid fa-link" aria-hidden="true"></i> Copy link</button>
+      <span class="sn-status" id="snStatus" role="status"></span>
+    </div>
+  </header>
+
+  <form class="sn-form" id="snForm" novalidate>
+    <div class="sn-field">
+      <label class="sn-label" for="cidrIn">Address / prefix</label>
+      <input class="sn-input" id="cidrIn" name="cidr" type="text" inputmode="decimal" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="done" value="192.168.10.77/26" aria-describedby="cidrHint cidrErr">
+      <p class="sn-hint" id="cidrHint">For example 192.168.10.77/26 or 10.0.0.0/255.255.252.0. On a phone keypad, type the address and set the prefix with the slider.</p>
+      <p class="sn-err" id="cidrErr" aria-live="polite"></p>
+    </div>
+    <div class="sn-field">
+      <label class="sn-label" for="prefixRange">Prefix length <output class="sn-pfx" id="prefixOut" for="prefixRange">/26</output></label>
+      <input class="sn-range" id="prefixRange" name="prefix" type="range" min="0" max="32" step="1" value="26" aria-valuetext="/26: 26 network bits, 6 host bits" style="--p:26">
+      <div class="sn-scale" aria-hidden="true"><span>/0</span><span>/8</span><span>/16</span><span>/24</span><span>/32</span></div>
+    </div>
+  </form>
+
+  <div class="sn-bitsbox">
+    <div class="sn-bits" id="snBits" aria-hidden="true"></div>
+    <p class="sn-legend" aria-hidden="true">
+      <span class="sn-key sn-key-net"></span><span id="snLegNet">26 network bits</span>
+      <span class="sn-key sn-key-host"></span><span id="snLegHost">6 host bits</span>
+      <span class="sn-legend-note">above each octet: its value · below: the mask octet</span>
+    </p>
+  </div>
+
+  <dl class="sn-results" id="snResults" aria-live="polite">
+    <div><dt>Network address</dt><dd id="snNet">192.168.10.64/26</dd></div>
+    <div><dt>Broadcast address</dt><dd id="snBc">192.168.10.127</dd></div>
+    <div><dt>First usable host</dt><dd id="snFirst">192.168.10.65</dd></div>
+    <div><dt>Last usable host</dt><dd id="snLast">192.168.10.126</dd></div>
+    <div><dt>Usable hosts</dt><dd id="snUsable">62</dd></div>
+    <div><dt>Total addresses</dt><dd id="snTotal">64 (2^6)</dd></div>
+    <div><dt>Netmask</dt><dd id="snMask">255.255.255.192</dd></div>
+    <div><dt>Wildcard mask</dt><dd id="snWild">0.0.0.63</dd></div>
+    <div class="sn-wide"><dt>Binary: address AND mask = network</dt><dd id="snBin"><span class="sn-binrow"><span class="sn-binlab">address</span> <code class="sn-bincode"><span class="n">11000000.10101000.00001010.01</span>001101</code> <span class="sn-bindec">192.168.10.77</span></span><span class="sn-binrow"><span class="sn-binlab">AND mask</span> <code class="sn-bincode"><span class="n">11111111.11111111.11111111.11</span>000000</code> <span class="sn-bindec">255.255.255.192</span></span><span class="sn-binrow"><span class="sn-binlab">= network</span> <code class="sn-bincode"><span class="n">11000000.10101000.00001010.01</span>000000</code> <span class="sn-bindec">192.168.10.64</span></span></dd></div>
+    <div class="sn-wide"><dt>Address type</dt><dd id="snType" class="sn-type"><span class="sn-tline">Class C (historic classful label; routing today uses CIDR)</span> <span class="sn-tline">Private: 192.168.0.0/16, RFC 1918</span></dd></div>
+  </dl>
+
+  <div class="sn-quiz" id="snQuiz" role="region" aria-labelledby="snQTitle" hidden>
+    <h4 class="sn-qtitle" id="snQTitle">Quiz: <span class="sn-qcidr" id="snQText"></span></h4>
+    <p class="sn-qsub">Work out the network address, the broadcast address and the number of usable hosts, then check your answers.</p>
+    <form class="sn-qform" id="snQForm" novalidate>
+      <div class="sn-qfield">
+        <label for="snQNet">Network address</label>
+        <input class="sn-input" id="snQNet" type="text" inputmode="decimal" autocomplete="off" autocapitalize="off" spellcheck="false" aria-describedby="snQNetFb">
+        <p class="sn-fb" id="snQNetFb"></p>
+      </div>
+      <div class="sn-qfield">
+        <label for="snQBc">Broadcast address</label>
+        <input class="sn-input" id="snQBc" type="text" inputmode="decimal" autocomplete="off" autocapitalize="off" spellcheck="false" aria-describedby="snQBcFb">
+        <p class="sn-fb" id="snQBcFb"></p>
+      </div>
+      <div class="sn-qfield">
+        <label for="snQHosts">Usable hosts</label>
+        <input class="sn-input" id="snQHosts" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" aria-describedby="snQHostsFb">
+        <p class="sn-fb" id="snQHostsFb"></p>
+      </div>
+      <div class="sn-qbtns">
+        <button type="submit" class="sn-btn"><i class="fa-solid fa-check" aria-hidden="true"></i> Check answers</button>
+        <button type="button" class="sn-btn sn-btn-ghost" id="snQNew"><i class="fa-solid fa-shuffle" aria-hidden="true"></i> New question</button>
+        <button type="button" class="sn-btn sn-btn-ghost" id="snQShow" hidden><i class="fa-solid fa-calculator" aria-hidden="true"></i> Show it in the calculator</button>
+      </div>
+    </form>
+    <div class="sn-qresult" id="snQResult" role="status" aria-live="polite"></div>
+  </div>
+</article>

@@ -1,0 +1,10 @@
+---
+/* FEATURE 53 — recruiter CTF, flag 1 of 3: an HTML comment for people who view the source.
+   set:html keeps it in the output (Astro drops ordinary template comments). */
+const comment = `<!--
+  Hi there, you are reading the source. That's the spirit.
+  CTF flag 1 of 3, base64-encoded: UkVOU097djEzd19zMHVyYzNfNjc5ZWU2OTh9
+  Decode it (atob() in the browser console works) and submit it in the footer.
+-->`;
+---
+<Fragment set:html={comment} />

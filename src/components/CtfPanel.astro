@@ -1,0 +1,22 @@
+<!-- FEATURE 53 — recruiter CTF panel (logic: src/scripts/ctf.js) -->
+<details class="ctf" id="ctf">
+  <summary><i class="fa-solid fa-flag" aria-hidden="true"></i> 3 flags are hidden on this site · <span id="ctfCount">0/3</span> found</summary>
+  <div class="ctf-body">
+    <p class="ctf-intro">A small capture-the-flag for curious recruiters and fellow students. Flags look like <code>{'RENSO{…}'}</code>.</p>
+    <ol class="ctf-hints" id="ctfHints">
+      <li>Flag 1 sits where developers leave notes for each other: view the page source.</li>
+      <li>Flag 2 talks to whoever opens the browser console. On a phone, open the terminal (<code>&gt;_</code>) and type <code>hire</code>.</li>
+      <li>Flag 3 is in the file that search-engine crawlers read first.</li>
+    </ol>
+    <form class="ctf-form" id="ctfForm" novalidate>
+      <label for="ctfIn">Submit a flag</label>
+      <div class="ctf-row">
+        <input id="ctfIn" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="RENSO{...}" aria-describedby="ctfMsg">
+        <button type="submit" class="ctf-btn">Check</button>
+      </div>
+      <p class="ctf-msg" id="ctfMsg" role="status" aria-live="polite"></p>
+    </form>
+    <progress id="ctfProg" max="3" value="0" aria-label="Flags found"></progress>
+    <div class="ctf-win" id="ctfWin" hidden></div>
+  </div>
+</details>

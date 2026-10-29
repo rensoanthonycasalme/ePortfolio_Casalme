@@ -1,0 +1,20 @@
+{
+  "name": "eportfolio-casalme",
+  "private": true,
+  "type": "module",
+  "version": "2.0.0",
+  "description": "Renso Anthony L. Casalme: IT student portfolio (Astro)",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@fontsource-variable/dm-sans": "5.3.0",
+    "@fontsource/space-mono": "5.3.0",
+    "@fontsource/syne": "5.3.0",
+    "@fortawesome/fontawesome-free": "6.7.2",
+    "astro": "7.3.8",
+    "gsap": "3.15.0"
+  }
+}

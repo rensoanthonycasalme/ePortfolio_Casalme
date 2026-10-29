@@ -1,0 +1,16 @@
+<!-- FEATURE 54 — security self-check: the checks run live in the visitor's browser (src/scripts/audit.js) -->
+<button type="button" class="audit-open" id="auditOpen" aria-haspopup="dialog" aria-controls="auditDlg">
+  <i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Run the site's security self-check
+</button>
+<dialog class="audit" id="auditDlg" aria-labelledby="auditTitle">
+  <div class="audit-head">
+    <div>
+      <p class="audit-kicker">Security self-check · runs in your browser</p>
+      <h2 class="audit-title" id="auditTitle">How this site protects you</h2>
+    </div>
+    <button type="button" class="audit-close" id="auditClose" aria-label="Close the security report"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+  </div>
+  <p class="audit-sum" id="auditSum" role="status" aria-live="polite">Running checks…</p>
+  <ol class="audit-list" id="auditList"></ol>
+  <p class="audit-foot">These are real checks against this page, not a scripted demo. WARN rows are honest limits, mostly things GitHub Pages does not let a static site control.</p>
+</dialog>

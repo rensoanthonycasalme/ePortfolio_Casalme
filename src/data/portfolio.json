@@ -1,0 +1,316 @@
+{
+  "_readme": "Renso: this file (src/data/portfolio.json) is the one place to edit the facts on the site. It feeds the certificate cards, flip-card backs, certificate pop-up, education details, hero stats, internship snapshot, contact links and the printable resume. Any empty string or empty list renders NOTHING on the page, so only fill a slot with something true. resume.pdf = path of a 1-page PDF you add to the repo (for example assets/Casalme_Renso_Resume.pdf); while it is empty the hero button prints the built-in resume instead. ojt.hours = required OJT hours (e.g. '486 hours'); ojt.window = when you can start and end; ojt.setup = Onsite / Hybrid / Remote; ojt.commute = cities you can reach; ojt.moa = e.g. 'DLSL endorsement letter available'. certs[].verifyUrl = the Credly / NetAcad link that proves the certificate (the Cisco images show a Cert ID at the bottom); a 'Verify credential' button appears once it is set. about.story = one or two sentences in your own words about what pulled you into IT. education[].details = short bullet facts; elementary and secondary stay empty until you confirm them. The hero '72+ Modules Completed' stat is plain HTML: change it if the 58-module Accenture certificate already includes the 14. analytics.goatcounter = your GoatCounter site code, if you decide to use it. Keep valid JSON: double quotes, no trailing commas.",
+  "person": {
+    "name": "Renso Anthony L. Casalme",
+    "school": "De La Salle Lipa",
+    "program": "BS Information Technology",
+    "programShort": "BSIT",
+    "gradYear": 2027,
+    "email": "renso_anthony_casalme@dlsl.edu.ph",
+    "links": {
+      "github": "https://github.com/rensoanthonycasalme",
+      "linkedin": "https://www.linkedin.com/in/renso-casalme/",
+      "facebook": "https://facebook.com/RensoCasalme"
+    }
+  },
+  "resume": {
+    "pdf": ""
+  },
+  "ojt": {
+    "hours": "",
+    "window": "",
+    "setup": "",
+    "commute": "",
+    "moa": ""
+  },
+  "interests": [
+    "IT Support",
+    "Networking",
+    "Cybersecurity"
+  ],
+  "skills": [
+    {
+      "id": "netsec",
+      "name": "Networking Security",
+      "service": "networking-security",
+      "port": "443/tcp",
+      "state": "open",
+      "evidence": [
+        {
+          "cert": "cisco-cyber-threat-management"
+        }
+      ]
+    },
+    {
+      "id": "support",
+      "name": "Customer Support",
+      "service": "customer-support",
+      "port": "3389/tcp",
+      "state": "open",
+      "evidence": [
+        {
+          "cert": "accenture-s2s-14"
+        },
+        {
+          "cert": "accenture-s2s-58"
+        }
+      ]
+    },
+    {
+      "id": "troubleshoot",
+      "name": "Technical Troubleshooting",
+      "service": "troubleshooting",
+      "port": "7/tcp",
+      "state": "filtered",
+      "evidence": [],
+      "note": "learning: no certificate yet"
+    },
+    {
+      "id": "python",
+      "name": "Python Programming",
+      "service": "python",
+      "port": "8000/tcp",
+      "state": "open",
+      "evidence": [
+        {
+          "cert": "cisco-python-essentials-1"
+        },
+        {
+          "cert": "cisco-python-essentials-2"
+        }
+      ]
+    },
+    {
+      "id": "threats",
+      "name": "Cyber Threat Awareness",
+      "service": "threat-awareness",
+      "port": "514/udp",
+      "state": "open",
+      "evidence": [
+        {
+          "cert": "cisco-cyber-threat-management"
+        }
+      ]
+    },
+    {
+      "id": "comms",
+      "name": "Workplace Communication",
+      "service": "communication",
+      "port": "5060/udp",
+      "state": "open",
+      "evidence": [
+        {
+          "cert": "accenture-s2s-14"
+        },
+        {
+          "cert": "accenture-s2s-58"
+        }
+      ]
+    }
+  ],
+  "roles": [
+    {
+      "id": "helpdesk",
+      "label": "IT Support",
+      "skills": [
+        "support",
+        "troubleshoot",
+        "comms"
+      ],
+      "certs": [
+        "accenture-s2s-14",
+        "accenture-s2s-58"
+      ],
+      "weekOne": "",
+      "toLearn": ""
+    },
+    {
+      "id": "noc",
+      "label": "Network (NOC)",
+      "skills": [
+        "netsec",
+        "troubleshoot",
+        "python"
+      ],
+      "certs": [
+        "cisco-cyber-threat-management",
+        "cisco-python-essentials-1",
+        "cisco-python-essentials-2"
+      ],
+      "lab": true,
+      "weekOne": "",
+      "toLearn": ""
+    },
+    {
+      "id": "soc",
+      "label": "Security (SOC)",
+      "skills": [
+        "threats",
+        "netsec",
+        "python"
+      ],
+      "certs": [
+        "cisco-cyber-threat-management",
+        "cisco-python-essentials-1",
+        "cisco-python-essentials-2"
+      ],
+      "lab": true,
+      "weekOne": "",
+      "toLearn": ""
+    }
+  ],
+  "tools": [],
+  "learningNext": [],
+  "labs": [],
+  "ipcalc": {
+    "repo": "",
+    "code": ""
+  },
+  "netlab": {
+    "hint": "",
+    "explore": null
+  },
+  "now": {
+    "updated": "",
+    "focus": "",
+    "next": {
+      "label": "",
+      "target": ""
+    },
+    "entries": []
+  },
+  "about": {
+    "story": ""
+  },
+  "certs": [
+    {
+      "id": "jpcs-devroutes",
+      "title": "DevRoutes: Learning How to Learn with Roadmaps",
+      "type": "Certificate of Participation",
+      "cat": "participation",
+      "date": "January 29, 2026",
+      "dateISO": "2026-01-29",
+      "issuer": "Junior Philippine Computer Society – De La Salle Chapter",
+      "venue": "MB Auditorium, De La Salle Lipa",
+      "img": "assets/img/cert-devroutes-jpcs.png",
+      "icon": "fa-solid fa-signs-post",
+      "summary": "Seminar on structured learning approaches, technical roadmaps, and career preparation in tech.",
+      "desc": "Participated in a seminar focused on structured learning approaches, technical roadmaps, and strategies for improving self-learning and career preparation in technology-related fields.",
+      "learned": "Learned how to approach learning through organized roadmaps, improve study direction, build better learning habits, and develop a more structured path in improving technical skills.",
+      "verifyUrl": "",
+      "modules": null
+    },
+    {
+      "id": "accenture-s2s-14",
+      "title": "Accenture Skills to Succeed Academy – 14 Modules",
+      "short": "Accenture Skills to Succeed · 14 modules",
+      "type": "Certificate of Achievement",
+      "cat": "achievement",
+      "date": "February 6, 2026",
+      "dateISO": "2026-02-06",
+      "issuer": "Accenture Skills to Succeed Academy",
+      "venue": "Online",
+      "img": "assets/img/cert-accenture-14-modules.png",
+      "icon": "fa-solid fa-briefcase",
+      "summary": "Completed 14 modules on personal development, workplace readiness, and foundational digital skills.",
+      "desc": "Successfully completed 14 learning modules focused on personal development, workplace readiness, and foundational digital skills.",
+      "learned": "Enhanced my understanding of communication, adaptability, productivity, workplace preparation, and continuous learning in technology and professional environments.",
+      "verifyUrl": "",
+      "modules": 14
+    },
+    {
+      "id": "accenture-s2s-58",
+      "title": "Accenture Skills to Succeed Academy – 58 Modules",
+      "short": "Accenture Skills to Succeed · 58 modules",
+      "type": "Certificate of Achievement",
+      "cat": "achievement",
+      "date": "March 4, 2026",
+      "dateISO": "2026-03-04",
+      "issuer": "Accenture Skills to Succeed Academy",
+      "venue": "Online",
+      "img": "assets/img/cert-accenture-58-modules.png",
+      "icon": "fa-solid fa-briefcase",
+      "summary": "Completed 58 modules covering future-ready skills, workplace effectiveness, and technology-related learning.",
+      "desc": "Completed 58 learning modules that focused on future-ready skills, workplace effectiveness, and technology-related learning.",
+      "learned": "Developed knowledge in communication, critical thinking, emotional intelligence, coding fundamentals, data interpretation, problem-solving, generative AI concepts, and lifelong learning.",
+      "verifyUrl": "",
+      "modules": 58
+    },
+    {
+      "id": "cisco-cyber-threat-management",
+      "title": "Cyber Threat Management",
+      "type": "Certificate of Completion",
+      "cat": "completion",
+      "date": "April 17, 2026",
+      "dateISO": "2026-04-17",
+      "issuer": "Cisco Networking Academy",
+      "venue": "Online",
+      "img": "assets/img/cert-cisco-cyber-threat-mgmt.png",
+      "icon": "fa-solid fa-shield-halved",
+      "summary": "Cybersecurity training on cyber threats, digital security awareness, and protection strategies.",
+      "desc": "Completed cybersecurity-related training focused on cyber threats, digital security awareness, and protection strategies for information systems.",
+      "learned": "Improved my understanding of cybersecurity fundamentals, digital threats, attack prevention, and the importance of securing systems and networks against cyber risks.",
+      "verifyUrl": "",
+      "modules": null
+    },
+    {
+      "id": "cisco-python-essentials-1",
+      "title": "Python Essentials 1",
+      "type": "Certificate of Completion",
+      "cat": "completion",
+      "date": "April 20, 2026",
+      "dateISO": "2026-04-20",
+      "issuer": "Cisco Networking Academy & Python Institute",
+      "venue": "Online",
+      "img": "assets/img/cert-cisco-python-essentials-1.png",
+      "icon": "fa-brands fa-python",
+      "summary": "Introductory Python: variables, conditions, loops, functions, and foundational programming concepts.",
+      "desc": "Completed introductory Python programming training focused on programming fundamentals and logical problem-solving.",
+      "learned": "Learned the basics of Python programming including variables, conditions, loops, functions, syntax structure, and foundational programming concepts.",
+      "verifyUrl": "",
+      "modules": null
+    },
+    {
+      "id": "cisco-python-essentials-2",
+      "title": "Python Essentials 2",
+      "type": "Certificate of Completion",
+      "cat": "completion",
+      "date": "April 20, 2026",
+      "dateISO": "2026-04-20",
+      "issuer": "Cisco Networking Academy & Python Institute",
+      "venue": "Online",
+      "img": "assets/img/cert-cisco-python-essentials-2.png",
+      "icon": "fa-brands fa-python",
+      "summary": "Intermediate Python: debugging, modular coding, data handling, and writing structured programs.",
+      "desc": "Completed intermediate Python programming training focused on deeper coding concepts and practical applications.",
+      "learned": "Enhanced my understanding of Python programming, debugging, modular coding, data handling, and writing more efficient and structured programs.",
+      "verifyUrl": "",
+      "modules": null
+    }
+  ],
+  "education": [
+    {
+      "school": "San Guillermo Academy",
+      "years": "2021 – 2023",
+      "level": "Senior High School",
+      "sub": "Senior High School Education",
+      "current": false,
+      "details": []
+    },
+    {
+      "school": "De La Salle Lipa",
+      "years": "2023 – 2027",
+      "level": "Tertiary Level",
+      "sub": "BS Information Technology — In Progress",
+      "current": true,
+      "details": [
+        "Cisco Networking Academy courses completed in 2026: Cyber Threat Management, Python Essentials 1 and Python Essentials 2",
+        "Accenture Skills to Succeed Academy: certificates of achievement for 14 and 58 learning modules (2026)",
+        "JPCS – De La Salle Chapter seminar: DevRoutes, Learning How to Learn with Roadmaps (January 2026)"
+      ]
+    }
+  ],
+  "analytics": {
+    "goatcounter": ""
+  }
+}

@@ -1,0 +1,77 @@
+<!-- ═══════════════════════ SKILLS ══════════════════════ -->
+<section id="skills">
+  <div class="container">
+    <div class="s-head gsap-reveal">
+      <span class="s-label"><i class="fa-solid fa-code" aria-hidden="true"></i> Technical Competencies</span>
+      <h2 class="s-title glitch" data-text="Skills &amp; Expertise">Skills &amp; Expertise</h2>
+      <p class="s-sub">A blend of technical knowledge and professional soft skills developed through academic study and industry-aligned training.</p>
+      <div class="divider"></div>
+    </div>
+    <!-- FEATURE 46 — evidence scan: rendered from PD.skills; every "open" row links to the certificate that backs it -->
+    <div class="scan gsap-reveal" id="skillScan" hidden>
+      <div class="scan-bar" aria-hidden="true"><span></span><span></span><span></span><b>renso@dlsl: ~</b></div>
+      <div class="scan-body">
+        <p class="scan-cmd"><span class="scan-prompt" aria-hidden="true">$</span> nmap -sV --script=evidence renso</p>
+        <p class="scan-meta">Nmap scan report for renso (BSIT, De La Salle Lipa)<br>Host is up. Each open port is backed by a certificate on this page; select the evidence to open it.</p>
+        <div class="scan-tablewrap">
+          <table class="scan-table">
+            <caption class="sr-only">Skills and the evidence behind each one</caption>
+            <thead><tr><th scope="col">Port</th><th scope="col">State</th><th scope="col">Service</th><th scope="col">Evidence</th></tr></thead>
+            <tbody id="skillScanRows"></tbody>
+          </table>
+        </div>
+        <p class="scan-done" id="skillScanDone"></p>
+      </div>
+    </div>
+
+    <div class="skills-grid" id="skillsGrid">
+      <div class="skill-card gsap-skill" data-skill="netsec">
+        <div class="skill-icon"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></div>
+        <div class="skill-name">Networking Security</div>
+        <div class="skill-desc">Knowledgeable in basic network protection, secure access management, and defending digital systems against cyber threats.</div>
+      </div>
+      <div class="skill-card gsap-skill" data-skill="support">
+        <div class="skill-icon"><i class="fa-solid fa-headset" aria-hidden="true"></i></div>
+        <div class="skill-name">Customer Support</div>
+        <div class="skill-desc">Able to communicate effectively with users, address concerns professionally, and provide clear technical assistance.</div>
+      </div>
+      <div class="skill-card gsap-skill" data-skill="troubleshoot">
+        <div class="skill-icon"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i></div>
+        <div class="skill-name">Technical Troubleshooting</div>
+        <div class="skill-desc">Capable of diagnosing technical problems, identifying root causes, and applying practical solutions efficiently.</div>
+      </div>
+      <div class="skill-card gsap-skill" data-skill="python">
+        <div class="skill-icon"><i class="fa-brands fa-python" aria-hidden="true"></i></div>
+        <div class="skill-name">Python Programming</div>
+        <div class="skill-desc">Completed Python Essentials 1 &amp; 2 via Cisco NetAcad — variables, loops, functions, data handling, and modular coding.</div>
+      </div>
+      <div class="skill-card gsap-skill" data-skill="threats">
+        <div class="skill-icon"><i class="fa-solid fa-network-wired" aria-hidden="true"></i></div>
+        <div class="skill-name">Cyber Threat Awareness</div>
+        <div class="skill-desc">Trained in identifying cyber threats, digital security concepts, attack prevention, and securing information systems.</div>
+      </div>
+      <div class="skill-card gsap-skill" data-skill="comms">
+        <div class="skill-icon"><i class="fa-solid fa-comments" aria-hidden="true"></i></div>
+        <div class="skill-name">Workplace Communication</div>
+        <div class="skill-desc">Developed through 72+ Accenture modules covering professional communication, productivity, and workplace readiness.</div>
+      </div>
+    </div>
+
+    <div class="gsap-reveal" style="margin-top:8px">
+      <p class="soft-title">Soft Skills</p>
+      <div class="soft-grid">
+        <span class="soft-tag"><i class="fa-solid fa-lightbulb" aria-hidden="true"></i> Problem-Solving</span>
+        <span class="soft-tag"><i class="fa-solid fa-brain" aria-hidden="true"></i> Critical Thinking</span>
+        <span class="soft-tag"><i class="fa-solid fa-comment-dots" aria-hidden="true"></i> Communication</span>
+        <span class="soft-tag"><i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i> Adaptability</span>
+        <span class="soft-tag"><i class="fa-solid fa-book-open-reader" aria-hidden="true"></i> Lifelong Learning</span>
+        <span class="soft-tag"><i class="fa-solid fa-users" aria-hidden="true"></i> Teamwork</span>
+        <span class="soft-tag"><i class="fa-solid fa-clock" aria-hidden="true"></i> Time Management</span>
+        <span class="soft-tag"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i> Attention to Detail</span>
+      </div>
+      <!-- owner slots: rendered from PD.tools / PD.learningNext, hidden while empty -->
+      <div class="tag-row" id="toolsRow" hidden><p class="soft-title">Tools I've actually used</p><div class="soft-grid" id="toolsList"></div></div>
+      <div class="tag-row" id="learnRow" hidden><p class="soft-title">Learning next</p><div class="soft-grid" id="learnList"></div></div>
+    </div>
+  </div>
+</section>

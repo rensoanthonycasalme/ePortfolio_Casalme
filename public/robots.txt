@@ -1,0 +1,9 @@
+# robots.txt · Renso Anthony L. Casalme · IT portfolio
+#
+# CTF flag 3 of 3: RENSO{r0b0ts_txt_07e0887e}
+# (submit it in the footer of the page)
+
+User-agent: *
+Allow: /
+
+Sitemap: https://rensoanthonycasalme.github.io/ePortfolio_Casalme/sitemap.xml

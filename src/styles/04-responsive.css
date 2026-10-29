@@ -1,0 +1,39 @@
+/* ── MOBILE (≤600px) ─────────────────────── */
+@media (max-width:600px) {
+  .nav-links { display:none; }
+  .hamburger { display:flex; }
+  .skills-grid { grid-template-columns:1fr; }
+  .cert-grid { grid-template-columns:1fr; }
+  .photo-badge { display:none; }
+  .hero-name { font-size:clamp(2rem,8vw,2.8rem); }
+  #backTop { bottom:20px; right:16px; }
+  .filter-row { gap:6px; }
+  .filter-btn { padding:7px 14px; font-size:.78rem; }
+}
+
+/* ── LARGE (≥1400px) ─────────────────────── */
+@media (min-width:1400px) {
+  .hero-inner { grid-template-columns:1fr 460px; }
+  .skills-grid { grid-template-columns:repeat(3,1fr); }
+}
+
+/* ── PRINT ───────────────────────────────── */
+@media print {
+  #navbar,#backTop,.mobile-menu,#cur,#curR,#confettiCanvas { display:none!important; }
+  section { padding:40px 0; }
+  .hero-inner { grid-template-columns:1fr; }
+}
+
+/* ── REDUCED MOTION ─────────────────────── */
+/* html[data-motion] is set before first paint (Feature 45); this media query is the
+   no-JS fallback and also respects the OS setting unless the visitor turned motion on. */
+@media (prefers-reduced-motion:reduce) {
+  html:not([data-motion="on"]) *, html:not([data-motion="on"]) *::before, html:not([data-motion="on"]) *::after { animation-duration:.01ms!important; transition-duration:.01ms!important; }
+}
+/* Motion off (pause button or OS "reduce motion"): a calm, fully readable page */
+html[data-motion="off"] { scroll-behavior:auto; }
+html[data-motion="off"] *, html[data-motion="off"] *::before, html[data-motion="off"] *::after { animation:none !important; }
+html[data-motion="off"] body, html[data-motion="off"] body * { cursor:auto !important; }
+html[data-motion="off"] :is(a, button, summary, label, select, [role="button"], .cert-card, .filter-btn, .side-dot, .soft-tag, .tl-expand-btn) { cursor:pointer !important; }
+html[data-motion="off"] #cur, html[data-motion="off"] #curR, html[data-motion="off"] .c-spark { display:none !important; }
+html[data-motion="off"] .s-title.glitch:hover::before, html[data-motion="off"] .s-title.glitch:hover::after { content:none; }

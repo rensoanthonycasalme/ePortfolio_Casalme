@@ -1,2 +1,7 @@
 certs/
 profile.jpg
+
+# Astro
+node_modules/
+dist/
+.astro/

@@ -1,0 +1,128 @@
+/* ── Terminal (Feature 50) ── */
+/* ═══════════════════════════════════════════════════════
+   FEATURE ?? — RENSO@DLSL TERMINAL
+═══════════════════════════════════════════════════════ */
+/* navbar trigger (same look as #themeToggle; 46px hit area via ::after) */
+#termToggle {
+  position:relative; flex-shrink:0;
+  width:38px; height:38px; border-radius:50%; border:1.5px solid var(--border);
+  background:var(--bg3); color:var(--muted); font-size:.8rem;
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer; transition:color .3s, border-color .3s;
+}
+#termToggle::after { content:''; position:absolute; inset:-4px; border-radius:50%; }
+#termToggle:hover, #termToggle[aria-expanded="true"] { color:var(--accent); border-color:var(--accent); }
+#termToggle:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+
+/* overlay + window (the terminal itself is dark in both themes) */
+.term-overlay { position:fixed; inset:0; z-index:2100; }
+.term-overlay[hidden] { display:none !important; }
+.term-backdrop { position:absolute; inset:0; background:rgba(8,5,6,.55); }
+[data-theme="dark"] .term-backdrop { background:rgba(0,0,0,.55); }
+.term-win {
+  --t-bg:#0e0a0b; --t-bar:#181214; --t-fg:#ece6e6; --t-dim:#a89fa1; --t-acc:#ec6a70;
+  --t-ok:#4ade80; --t-err:#fca5a5; --t-warn:#fcd34d; --t-line:rgba(200,185,187,.18);
+  position:absolute; left:0; right:0; bottom:16px; margin:0 auto;
+  width:min(920px, calc(100% - 32px)); height:min(500px, calc(100% - var(--nav-h) - 40px));
+  display:flex; flex-direction:column; overflow:hidden;
+  background:var(--t-bg); color:var(--t-fg); text-align:left;
+  border:1px solid rgba(var(--accentRGB),.35); border-radius:var(--r-lg);
+  box-shadow:0 24px 70px rgba(0,0,0,.55);
+  font-family:var(--fm); font-size:.84rem; line-height:1.6;
+}
+[data-theme="dark"] .term-win { border-color:rgba(var(--accentRGB),.45); box-shadow:0 24px 70px rgba(0,0,0,.7); }
+.term-anim .term-win { animation:termIn .26s cubic-bezier(.2,.8,.2,1) both; }
+.term-anim .term-backdrop { animation:termFade .2s ease both; }
+@keyframes termIn { from { opacity:0; transform:translateY(18px) scale(.985); } }
+@keyframes termFade { from { opacity:0; } }
+
+.term-sr { position:absolute !important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
+
+/* title bar */
+.term-bar { display:flex; align-items:center; gap:12px; flex-shrink:0; padding:6px 6px 6px 14px; background:var(--t-bar); border-bottom:1px solid var(--t-line); }
+.term-dots { display:flex; gap:6px; }
+.term-dots i { display:block; width:10px; height:10px; border-radius:50%; background:#f87171; }
+.term-dots i:nth-child(2) { background:#fbbf24; }
+.term-dots i:nth-child(3) { background:#4ade80; }
+.term-title { flex:1; min-width:0; margin:0; text-align:center; font-family:var(--fm); font-size:.76rem; font-weight:400; letter-spacing:.02em; color:var(--t-dim); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.term-close { width:38px; height:38px; flex-shrink:0; display:flex; align-items:center; justify-content:center; border:0; border-radius:8px; background:transparent; color:var(--t-dim); font-size:1rem; cursor:pointer; }
+.term-close:hover { background:rgba(200,185,187,.14); color:var(--t-fg); }
+
+/* output */
+.term-out {
+  flex:1 1 auto; min-height:0; overflow-y:auto; overscroll-behavior:contain;
+  padding:12px 16px 8px; white-space:pre-wrap; overflow-wrap:anywhere;
+  scrollbar-width:thin; scrollbar-color:rgba(200,185,187,.35) transparent;
+}
+.term-out::-webkit-scrollbar { width:8px; }
+.term-out::-webkit-scrollbar-thumb { background:rgba(200,185,187,.3); border-radius:8px; }
+.term-block + .term-block { margin-top:6px; }
+.term-line { min-height:1.6em; }
+.term-echo { color:var(--t-fg); }
+.term-ps { color:var(--t-ok); }
+.term-out .t-dim  { color:var(--t-dim); }
+.term-out .t-err  { color:var(--t-err); }
+.term-out .t-ok   { color:var(--t-ok); }
+.term-out .t-warn { color:var(--t-warn); }
+.term-out .t-acc  { color:var(--t-acc); }
+.term-out a { color:var(--t-acc); text-decoration:underline; text-underline-offset:3px; }
+.term-out a:hover { color:#fff; }
+.term-run {
+  font:inherit; line-height:inherit; color:var(--t-acc); text-align:left;
+  background:none; border:0; border-bottom:1px dashed currentColor; border-radius:0;
+  padding:0; margin:0; cursor:pointer;
+}
+.term-run:hover { color:#fff; }
+.term-type { animation:termType var(--td,120ms) steps(var(--ts,20), end) var(--tdl,0ms) both; }
+@keyframes termType { from { clip-path:inset(0 100% 0 0); } to { clip-path:inset(0 0 0 0); } }
+.term-win :focus-visible { outline:2px solid var(--t-acc); outline-offset:2px; border-radius:3px; }
+.term-out:focus-visible { outline-offset:-3px; }
+
+/* quick-command chips */
+.term-chips { display:flex; flex-wrap:wrap; gap:6px; flex-shrink:0; padding:8px 14px; border-top:1px solid var(--t-line); }
+.term-chips:empty { display:none; }
+.term-chip {
+  min-height:30px; padding:4px 11px; border-radius:999px; white-space:nowrap; cursor:pointer;
+  font-family:var(--fm); font-size:.72rem; color:#d9cfd0;
+  background:rgba(200,185,187,.08); border:1px solid rgba(200,185,187,.24);
+  transition:border-color .2s, color .2s, background .2s;
+}
+.term-chip:hover { color:#fff; border-color:var(--t-acc); background:rgba(var(--accentRGB),.16); }
+
+/* prompt line */
+.term-form { display:flex; align-items:center; gap:8px; flex-shrink:0; padding:10px 16px 12px; border-top:1px solid var(--t-line); }
+.term-form:focus-within { box-shadow:inset 0 0 0 1px rgba(124,180,255,.55); }
+.term-ps-in { color:var(--t-ok); white-space:nowrap; }
+.term-in { flex:1; min-width:0; padding:6px 0; border:0; outline:none; background:transparent; color:var(--t-fg); font:inherit; font-size:.88rem; caret-color:var(--t-ok); }
+.term-in:focus, .term-in:focus-visible { outline:none; }
+.term-busy { display:none; font-size:.7rem; color:var(--t-dim); white-space:nowrap; }
+.term-overlay.is-busy .term-busy { display:inline; }
+
+/* ── PHONE (≤600px): full-screen sheet; JS pins it to visualViewport so the input stays above the keyboard ── */
+@media (max-width:600px) {
+  .term-win { top:0; bottom:auto; width:100%; height:100%; border:0; border-radius:0; }
+  .term-bar { padding-top:calc(6px + env(safe-area-inset-top, 0px)); }
+  .term-close { width:44px; height:44px; }
+  .term-out { padding:10px 12px 6px; font-size:.8rem; }
+  .term-chips { flex-wrap:nowrap; overflow-x:auto; padding:8px 12px; scrollbar-width:none; overscroll-behavior-x:contain; }
+  .term-chips::-webkit-scrollbar { display:none; }
+  .term-chip { flex:0 0 auto; min-height:44px; padding:6px 14px; font-size:.78rem; }
+  .term-form { padding:8px 12px calc(10px + env(safe-area-inset-bottom, 0px)); }
+  .term-ps-in { font-size:.74rem; }
+  .term-in { font-size:16px; min-height:44px; }
+  .term-busy { display:none !important; }
+  html.term-open, html.term-open body { overflow:hidden; }
+}
+@media (pointer:coarse) {
+  .term-chip { min-height:44px; }
+  .term-run { display:inline-block; padding:11px 0; margin:0 2px; }
+}
+
+/* ── MOTION OFF: output appears instantly ── */
+html[data-motion="off"] .term-overlay, html[data-motion="off"] .term-overlay * { animation:none !important; transition:none !important; }
+@media (prefers-reduced-motion: reduce) {
+  .term-overlay, .term-overlay * { animation:none !important; transition:none !important; }
+}
+
+/* ── PRINT ── */
+@media print { #termToggle, #terminal { display:none !important; } }

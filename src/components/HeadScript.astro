@@ -1,0 +1,11 @@
+<!-- Before first paint: theme (red & black unless the visitor saved "light") and
+     motion (saved choice, else the OS "reduce motion" setting). motionOK() is the
+     shared gate every animated feature checks. -->
+<script is:inline>(function(){var d=document.documentElement,t=null,m=null;try{t=localStorage.getItem('theme');m=localStorage.getItem('motion');}catch(e){}
+if(t==='light'||t==='dark'){d.setAttribute('data-theme',t);if(t==='light'){var c=document.querySelector('meta[name="theme-color"]');if(c)c.setAttribute('content','#f7f3f3');}}
+var off=(m==='on'||m==='off')?m==='off':!!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+d.setAttribute('data-motion',off?'off':'on');
+window.motionOK=function(){return d.getAttribute('data-motion')!=='off';};
+d.classList.add('js');
+/* fail-open: if the site script never finishes, never leave the preloader covering the page */
+window.addEventListener('load',function(){setTimeout(function(){var p=document.getElementById('preloader');if(p&&getComputedStyle(p).display!=='none'){p.style.display='none';var n=document.getElementById('navbar');if(n)n.style.opacity='1';}},7000);});})();</script>
