@@ -1,5 +1,6 @@
-certs/
-profile.jpg
+# old local source files (repo root only)
+/certs/
+/profile.jpg
 
 # Astro
 node_modules/
